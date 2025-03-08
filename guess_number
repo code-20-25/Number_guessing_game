@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container p{
+margin: 10px;
+}
+.container{
+border: 1px solid;
+width: 70%;
+margin: auto;
+}
+h2{
+text-align: center;
+}
+.contain{
+margin: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Number Guessing Game</h2>
+<p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+<div class="contain">
+<span>Enter a Guess:</span>&nbsp;<input type="number" id="num">&nbsp;<button id="btn">Submit your Guess</button>
+</div>
+Previous Guesses:<p id="demo"></p>
+<p id="result"></p>
+</div>
+<script>
+let x = Math.floor(Math.random()*100);
+let y= document.getElementById("num");
+let p = document.getElementById("demo");
+let p1 = document.getElementById("result");
+let btn = document.getElementById("btn");
+
+Let x1=0;
+btn.addEventListener("click",()=>{
+guess();
+x1+=1;
+if(x1>3){
+btn.disabled = true;
+}
+else{
+btn.disabled = false;
+}
+
+});
+
+function guess(){
+let y1 = Number(y.value);
+if(x==y1){
+p.innerHTML += "Yay! Your guess is correct.";
+p1.innerHTML += y.value;
+p.style.background = "green";
+}
+else if(x>y1){
+p.innerHTML += "Your guess is too low.";
+p1.innerHTML += y.value+" ,";
+}
+else if(x<y1){
+p.innerHTML += "Your guess is too high.";
+p1.innerHTML += y.value+",";
+}
+else{
+p.innerHTML = "unknown";
+}
+}
+</script>
+</body>
+</html>
